@@ -1,0 +1,17 @@
+{
+  "name": "talktalk",
+  "version": "1.0.0",
+  "description": "TalkTalk — Mobile-first chat app with simulated OTP and WebRTC calls",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "You",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.21.2",
+    "ws": "^8.18.3"
+  },
+  "keywords": []
+}

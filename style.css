@@ -1,0 +1,73 @@
+:root{
+  --accent:#6f2dbd; --accent2:#9b59ff; --bg:#faf7ff; --muted:#7d7d7d;
+  --white:#fff; --radius:12px;
+  --nav-height:60px;
+}
+*{box-sizing:border-box} .app-name {
+  color: #6f2dbd; text-align: start; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin-left: 8px;
+}
+html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Arial;background:var(--bg);color:#222}
+.app{display:flex;flex-direction:column;height:100vh}
+
+/* mobile-first: sidebar collapsed into top area; we'll show modal to auth */
+.sidebar{display:flex;flex-direction:column;padding:10px;background:var(--white);border-bottom:1px solid rgba(0,0,0,0.04)}
+.top .search-wrap{display:flex;gap:8px}
+.search-wrap input{flex:1;padding:10px;border-radius:999px;border:1px solid #eee}
+.icon-btn{background:transparent;border:none;font-size:18px;cursor:pointer;padding:6px}
+.profile-row{display:flex;align-items:center;gap:10px;padding:10px}
+.profile-thumb{width:56px;height:56px;border-radius:50%;background:linear-gradient(90deg,var(--accent),var(--accent2));overflow:hidden}
+.small-thumb{width:36px;height:36px}
+.profile-info{flex:1}
+.profile-info #myName{font-weight:700}
+.small{font-size:12px;color:var(--muted)}
+
+/* contact list */
+.contacts{display:flex;flex-direction:column;gap:6px;padding:8px;overflow:auto;max-height:28vh}
+.contact{display:flex;gap:10px;align-items:center;padding:8px;border-radius:10px;cursor:pointer}
+.contact:hover{background:rgba(155,89,255,0.04)}
+.contact .thumb{width:48px;height:48px;border-radius:50%;background:#eee;overflow:hidden}
+.contact .meta{flex:1}
+.contact .meta .name{font-weight:600}
+.add-contact-row{display:flex;gap:8px;padding:10px}
+
+/* chat area */
+.chat-area{flex:1;display:flex;flex-direction:column}
+.chat-header{display:flex;align-items:center;justify-content:space-between;padding:10px;background:var(--white);border-bottom:1px solid rgba(0,0,0,0.04)}
+.chat-left{display:flex;gap:10px;align-items:center}
+.chat-thumb{width:44px;height:44px;border-radius:50%;background:#eee;overflow:hidden}
+.messages{flex:1;padding:12px;overflow:auto;display:flex;flex-direction:column;gap:8px;background:linear-gradient(180deg, transparent, rgba(0,0,0,0.01))}
+
+/* message bubble */
+.msg{max-width:75%;padding:10px 12px;border-radius:14px;word-break:break-word;display:inline-block}
+.msg.me{align-self:flex-end;background:linear-gradient(90deg,var(--accent2),var(--accent));color:white}
+.msg.them{align-self:flex-start;background:var(--white);border:1px solid rgba(0,0,0,0.04)}
+.msg .time{display:block;font-size:11px;color:var(--muted);margin-top:6px}
+
+/* composer */
+.composer{display:flex;align-items:center;gap:8px;padding:10px;background:var(--white);border-top:1px solid rgba(0,0,0,0.04)}
+.left-tools{display:flex;align-items:center;gap:6px;position:relative}
+.emoji-dropdown{position:absolute;left:0;bottom:48px;background:var(--white);padding:6px;border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,0.06);display:flex;gap:6px}
+.emoji-dropdown[aria-hidden="true"]{display:none}
+.composer input[type=text]{flex:1;padding:10px;border-radius:20px;border:1px solid #eee}
+.right-tools{display:flex;gap:6px;align-items:center}
+.btn{background:var(--accent);color:var(--white);padding:8px 10px;border-radius:10px;border:none;cursor:pointer}
+
+/* bottom nav */
+.bottom-nav{height:var(--nav-height);display:flex;justify-content:space-around;align-items:center;border-top:1px solid rgba(0,0,0,0.04);background:var(--white);position:sticky;bottom:0}
+.nav-btn{background:transparent;border:none;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:16px;cursor:pointer;color:var(--muted)}
+.nav-btn.active{color:var(--accent);font-weight:700}
+
+/* modal */
+.modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35)}
+.hidden{display:none}
+.modal-card{background:var(--white);padding:16px;border-radius:12px;width:92%;max-width:420px;box-shadow:0 10px 30px rgba(0,0,0,0.12)}
+.modal-card input{width:100%;padding:10px;border-radius:8px;border:1px solid #eee;margin-top:8px}
+
+/* responsive: desktop layout */
+@media(min-width:900px){
+  .app{flex-direction:row}
+  .sidebar{width:320px;height:100vh;border-right:1px solid rgba(0,0,0,0.04);overflow:auto}
+  .chat-area{flex:1;height:100vh;display:flex;flex-direction:column}
+  .contacts{max-height:none}
+}

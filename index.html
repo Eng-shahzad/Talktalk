@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>TalkTalk — mobile-first chat</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+  <!-- Sidebar / left column (on larger screens) but mobile-first layout: shows top search and chat list -->
+  <aside class="sidebar">
+    <header class="top">
+      <div class="search-wrap">
+        <input id="searchInput" placeholder="Search contacts" />
+        <button id="addPeopleBtn" class="icon-btn" title="Add people">➕</button>
+      </div>
+    </header>
+
+    <section class="profile-row">
+      <div class="profile-thumb" id="myAvatarPreview"></div>
+      <div class="profile-info">
+        <div id="myName">Not signed</div>
+        <div class="small" id="myMobile">—</div>
+      </div>
+    </section>
+
+    <section class="contacts" id="contactsList"></section>
+
+    <div class="add-contact-row">
+      <input id="addMobileInput" placeholder="Add by mobile e.g. +92300..." />
+      <button id="addContactBtn" class="btn">Add</button>
+    </div>
+  </aside>
+
+  <!-- Main chat area -->
+  <main class="chat-area">
+    <div class="chat-header">
+      <div class="chat-left">
+        <div class="chat-thumb" id="chatAvatar"></div>
+        <div>
+          <div id="chatName">Select a contact</div>
+          <div class="small" id="chatMobileView"></div>
+        </div>
+      </div>
+      <div class="chat-actions">
+        <button id="callBtn" class="icon-btn">📞</button>
+        <button id="hangupBtn" class="icon-btn" style="display:none">🔌</button>
+      </div>
+    </div>
+
+    <div class="messages" id="messages"></div>
+
+    <div class="composer">
+      <div class="left-tools">
+        <button id="emojiMain" class="icon-btn">🙂</button>
+        <div class="emoji-dropdown" id="emojiDropdown" aria-hidden="true">
+          <button class="emoji">😀</button><button class="emoji">😂</button><button class="emoji">😍</button>
+          <button class="emoji">😢</button><button class="emoji">👍</button><button class="emoji">🔥</button>
+        </div>
+        <button id="cameraBtn" class="icon-btn">📷</button>
+      </div>
+
+      <input id="messageInput" placeholder="Type a message" />
+
+      <div class="right-tools">
+        <button id="recordBtn" class="icon-btn">🎙️</button>
+        <button id="sendBtn" class="icon-btn">➡️</button>
+      </div>
+    </div>
+
+    <!-- sticky bottom navbar -->
+    <nav class="bottom-nav">
+      <button class="nav-btn active" data-tab="chats">💬<span>Chats</span></button>
+      <button class="nav-btn" data-tab="groups">👥<span>Groups</span></button>
+      <button class="nav-btn" data-tab="calls">📞<span>Calls</span></button>
+    </nav>
+  </main>
+</div>
+
+<!-- hidden profile/OTP modal -->
+<div id="modal" class="modal hidden">
+  <div class="modal-card">
+    <h3>Sign in to TalkTalk</h3>
+    <input id="nameInput" placeholder="Your name" />
+    <input id="mobileInput" placeholder="Mobile (e.g. +92300...)" />
+    <div style="display:flex;gap:8px;margin-top:6px">
+      <button id="requestOtpBtn" class="btn">Request OTP</button>
+      <input id="otpInput" placeholder="OTP" style="width:110px"/>
+      <button id="verifyOtpBtn" class="btn">Verify</button>
+    </div>
+    <div style="margin-top:8px;display:flex;gap:8px;align-items:center">
+      <input id="avatarFile" type="file" accept="image/*" />
+      <div id="avatarPreviewSmall" class="profile-thumb small-thumb"></div>
+    </div>
+    <p class="small">OTP is simulated during testing — check server console.</p>
+    <button id="closeModal" class="btn">Close</button>
+  </div>
+</div>
+
+<!-- remote audio for calls -->
+<audio id="remoteAudio" autoplay></audio>
+
+<script src="app.js"></script>
+</body>
+</html>
